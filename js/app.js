@@ -55,6 +55,11 @@ function leerDatosCurso(curso) {
     if(existe){
         const cursos = articulosCarrito.map( curso => {
             if(curso.id === infoCurso.id){
+                let precioCurso = curso.precio;
+                let precio = parseInt(precioCurso.slice(1));
+                precio += (precio / curso.cantidad);
+                precioCurso = String(precio);
+                curso.precio = `$${precioCurso}`;
                 curso.cantidad += 1;
                 return curso;
             } else {
